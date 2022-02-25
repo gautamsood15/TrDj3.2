@@ -3,7 +3,7 @@
 """
 import random
 from django.http import HttpResponse
-
+from django.template.loader import render_to_string,get_template
 from articles.models import Article
 
 def home_view(request):
@@ -25,13 +25,21 @@ def home_view(request):
 
     # Django Templates
 
-    H1_STRING = f"""
-    <h1>Hello {article_obj.title} (id: {article_obj.id})!</h1>
-    """
-    P_STRING = f"""
-    <p>Hello {article_obj.content}!</p>
-    """
+    # tmpl = get_template("home-view.html")
+    # tmpl_string = tmpl.render(context=context)
+
+    context  = {
+        "object": article_obj,
+        "title": article_obj.title,
+        "id": article_obj.id,
+        "content": article_obj.content
+    }
+
+    HTML_STRING = render_to_string("home-view.html", context=context)
+    # HTML_STRING = """
+    # <h1>{title} (id: {id})!</h1>
+    # <p>{content}!</p>
+    # """.format(**context)
 
 
-    HTML_STRING = H1_STRING + P_STRING
     return HttpResponse(HTML_STRING)
