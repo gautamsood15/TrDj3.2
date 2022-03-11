@@ -10,7 +10,7 @@ def article_search_view(request):
 
 
     # print (dir(request))
-    print(request.GET)
+    #print(request.GET)
     query_dict = request.GET        # This is a dictionary
     query = query_dict.get("q")     # <input type='text' name='q' />
 
@@ -29,6 +29,30 @@ def article_search_view(request):
         "object": article_obj
     }
     return render(request, "articles/search.html", context=context)
+
+
+
+
+
+# @csrf_exempt                # Allows us to exempt the need for csrf authentication required 
+def article_create_view(request):
+
+    #print(request.POST)
+    context = {}
+    if request.method == "POST":
+        title = request.POST.get("title")
+        content = request.POST.get("content")
+        print(title, content)
+        article_object = Article.objects.create(title=title, content=content)
+        context['object'] = article_object
+        context['created'] = True
+
+    return render(request, "articles/create.html", context=context)
+
+
+
+
+
 
 
 

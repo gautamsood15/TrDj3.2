@@ -22,7 +22,12 @@ from .views import home_view
 urlpatterns = [
     path('', home_view),               # index / home / root
     path('articles/', views.article_search_view),
+    path('articles/create/', views.article_create_view),
     path('articles/<int:id>/', views.article_detail_view),
     #re_path(r'articles/(?P<id>\d+)/$', home_view)
     path('admin/', admin.site.urls),
 ]
+
+
+# note --> oder at which the urls are mentioned matters as the url mentionde first is given precedance over the one 
+#           mentioned later if 2 urls are similar
