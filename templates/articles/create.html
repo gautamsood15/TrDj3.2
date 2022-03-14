@@ -6,16 +6,12 @@
 {% if not created %}
 
 
+
 <div style="margin-top:30px;">
     <form action="." method="POST">
         {% csrf_token %}                        <!-- Django has a {% csrf_token %} tag that is implemented to avoid malicious attacks. It generates a token on the server-side when rendering the page and makes sure to cross-check this token for any requests coming back in. If the incoming requests do not contain the token, they are not executed. -->
-        <div>
-            <input type='text' name='title' placeholder='Title' />
-        </div>
-        <div style="margin-top:10px;">
-            <textarea name="content" placeholder='Content'></textarea>
-        </div>
-            <button style="margin-top:30px;" type="submit">Create Article</button>
+        {{ form.as_p }}
+        <button style="margin-top:30px;" type="submit">Create Article</button>
     </form>
 </div>
 

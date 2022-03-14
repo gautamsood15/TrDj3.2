@@ -51,6 +51,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'TrDj.urls'
+LOGIN_URL='/login/'
 
 TEMPLATES = [
     {
