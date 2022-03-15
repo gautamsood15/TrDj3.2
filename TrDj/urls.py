@@ -42,5 +42,5 @@ urlpatterns = [
 ]
 
 
-# note --> order at which the urls are mentioned matters as the url mentionde first is given precedance over the one 
+# note --> order at which the urls are mentioned matters as the url mentioned first is given precedance over the one 
 #           mentioned later if 2 urls are similar
